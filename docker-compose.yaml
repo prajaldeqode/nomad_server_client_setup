@@ -1,0 +1,22 @@
+version: "3.3"
+services:
+  server:
+    image: nomad_image
+    container_name: "nomad_server"
+    tty: true
+    volumes:
+      - ./prac_server:/home
+    networks:
+      - nomad_net
+  client:
+    image: nomad_image
+    container_name: "nomad_client"
+    tty: true
+    volumes:
+      - ./prac_client:/home
+    networks:
+      - nomad_net
+networks:
+  nomad_net:
+    driver: bridge
+    
